@@ -1,6 +1,3 @@
-DEBUG = True
+DEBUG = False
 
-ADMINS = frozenset([
-    "1264990907@qq.com"
-])
-# mongo db: password for 1264990907@qq.com: 123
+ADMINS = frozenset(["yuli00986081@gmail.com"])
