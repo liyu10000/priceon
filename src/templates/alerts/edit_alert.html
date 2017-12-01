@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="page-header">
+        <h1>Edit Alert</h1>
+    </div>
+    <div class="form-size">
+        <form method="post">
+            <div class="form-group">
+                <label for="name">Item Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name" disabled>
+            </div>
+            <div class="form-group">
+                <label for="price_limit">Price Limit</label>
+                <input type="text" class="form-control" id="price_limit" name="price_limit" placeholder="75.00" value="{{ alert.price_limit }}" aria-describedby="priceLimitBlock">
+                <p id="priceLimitBlock" class="help-block">We'll notify you when the price goes under this</p>
+            </div>
+            <div class="form-group">
+                <label for="url">URL</label>
+                <input type="text" class="form-control" id="url" name="url" placeholder="http://..." aria-describedby="urlBlock" disabled>
+                <p id="urlBlock" class="help-block">Please copy the complete URL of this item on the shopping website</p>
+            </div>
+            <button type="submit" class="btn btn-success">Update</button>
+        </form>
+    </div>
+{% endblock %}
