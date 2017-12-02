@@ -17,7 +17,7 @@ def login_user():
                 return redirect(url_for(".user_alerts"))
         except UserErrors.UserError as e:
             return e.message
-    return render_template("users/login.html")  # send user an error if their login is invalid
+    return render_template("users/login.jinja2")  # send user an error if their login is invalid
 
 @user_blueprint.route('/register', methods=['GET', 'POST'])
 def register_user():
@@ -30,14 +30,14 @@ def register_user():
                 return redirect(url_for(".user_alerts"))
         except UserErrors.UserError as e:
             return e.message
-    return render_template("users/register.html")  # send user an error if their login is invalid
+    return render_template("users/register.jinja2")  # send user an error if their login is invalid
 
 @user_blueprint.route('/alerts')
 @user_decorators.requires_login
 def user_alerts():
     user = User.find_by_email(session['email'])
     alerts = user.get_alerts()
-    return render_template('users/alerts.html', alerts=alerts)
+    return render_template('users/alerts.jinja2', alerts=alerts)
 
 @user_blueprint.route('/logout')
 def logout_user():
