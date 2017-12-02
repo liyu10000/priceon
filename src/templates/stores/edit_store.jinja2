@@ -1,32 +1,32 @@
-{% extends "base.html" %}
+{% extends "base.jinja2" %}
 {% block content %}
     <div class="page-header">
-        <h1>Add New Store</h1>
+        <h1>Edit Store</h1>
     </div>
     <div class="form-size">
         <form method="post">
             <div class="form-group">
                 <label for="name">Store Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Store Name">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Store Name" value="{{ store.name }}">
             </div>
             <div class="form-group">
                 <label for="url_prefix">Store URL Prefix</label>
-                <input type="text" class="form-control" id="url_prefix" name="url_prefix" placeholder="https://www.amazon.com">
+                <input type="text" class="form-control" id="url_prefix" name="url_prefix" placeholder="https://www.amazon.com" value="{{ store.url_prefix }}">
             </div>
             <!-- It's the html code for amazon
             <span id="priceblock_ourprice" class="a-size-medium a-color-price">$866.89</span>
             -->
             <div class="form-group">
                 <label for="tag_name">Tag Name</label>
-                <input type="text" class="form-control" id="tag_name" name="tag_name" placeholder="span" value="span" aria-describedby="storeTagNameHelp">
+                <input type="text" class="form-control" id="tag_name" name="tag_name" placeholder="span" value="{{ store.tag_name }}" aria-describedby="storeTagNameHelp">
                 <span id="storeTagNameHelp" class="help-block">Inspect the html content of the site for the tag name that contains the item price (usually <code>span</code>)</span>
             </div>
             <div class="form-group">
                 <label for="query">Search Query</label>
-                <input type="text" class="form-control" id="query" name="query" placeholder='{"id": "priceblock_ourprice"}'value='{"id": "priceblock_ourprice"}' aria-describedby="queryHelp">
+                <input type="text" class="form-control" id="query" name="query" placeholder='{"id": "price"}' value='{{ store.query | tojson }}' aria-describedby="queryHelp">
                 <span id="queryHelp" class="help-block">The "id" that comes with the tag name in the site html content</span>
             </div>
-            <button type="submit" class="btn btn-success">Add Store</button>
+            <button type="submit" class="btn btn-primary">Update Store</button>
         </form>
     </div>
 {% endblock %}
