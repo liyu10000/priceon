@@ -23,7 +23,7 @@ def create_alert():
 
         return redirect(url_for('users.user_alerts'))
     # a 'GET' request
-    return render_template('alerts/create_alert.html')
+    return render_template('alerts/create_alert.jinja2')
 
 @alert_blueprint.route('/edit/<string:alert_id>', methods=['GET', 'POST'])
 @user_decorators.requires_login
@@ -36,7 +36,7 @@ def edit_alert(alert_id):
         alert.save_to_mongo()
 
         return redirect(url_for('users.user_alerts'))
-    return render_template('alerts/edit_alert.html', alert=alert)
+    return render_template('alerts/edit_alert.jinja2', alert=alert)
 
 @alert_blueprint.route('/deactivate/<string:alert_id>')
 @user_decorators.requires_login
@@ -60,7 +60,7 @@ def activate_alert(alert_id):
 @user_decorators.requires_login
 def get_alert_page(alert_id):
     alert = Alert.find_by_id(alert_id)
-    return render_template('alerts/alert.html', alert=alert)
+    return render_template('alerts/alert.jinja2', alert=alert)
 
 @alert_blueprint.route('/check_price/<string:alert_id>')
 # @user_decorators.requires_login
