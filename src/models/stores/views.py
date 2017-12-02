@@ -13,7 +13,7 @@ def index():
 
 @store_blueprint.route('/store/<string:store_id>')
 def store_page(store_id):
-    return render_template('stores/store.html', store=Store.get_by_id(store_id))
+    return render_template('stores/store.jinja2', store=Store.get_by_id(store_id))
 
 @store_blueprint.route('/edit/<string:store_id>', methods=['GET', 'POST'])
 @user_decorators.requires_admin_permissions
@@ -32,7 +32,7 @@ def edit_store(store_id):
 
         store.save_to_mongo()
         return redirect(url_for('.index'))
-    return render_template('stores/edit_store.html', store=store)
+    return render_template('stores/edit_store.jinja2', store=store)
 
 @store_blueprint.route('/delete/<string:store_id>')
 @user_decorators.requires_admin_permissions
@@ -50,5 +50,5 @@ def create_store():
         query = json.loads(request.form['query'])  # convert string representation of query to dictionary
         Store(name, url_prefix, tag_name, query).save_to_mongo()
         return redirect(url_for('.index'))
-    return render_template('stores/create_store.html')
+    return render_template('stores/create_store.jinja2')
 
