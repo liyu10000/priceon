@@ -27,15 +27,15 @@
         <div id="navbar" class="navbar-collapse collapse">
 
             {% if session['email'] %}
-                <ul class="nav navbar-nav navbar-center">
+                <ul class="nav navbar-nav">
 	            <li><a href="{{ url_for('stores.index') }}"><span class="glyphicon glyphicon-shopping-cart"></span> Stores</a></li>
-                    <li><a href="{{ url_for('users.user_alerts') }}"><span class="glyphicon glyphicon-th-list"></span> Alerts</a></li>
+                    <li><a href="{{ url_for('users.user_alerts') }}">Alerts</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ url_for('users.logout_user') }}"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
                 </ul>
             {% else %}
-	        <ul class="nav navbar-nav navbar-center">
+	        <ul class="nav navbar-nav">
 		    <li><a href="{{ url_for('stores.index') }}"><span class="glyphicon glyphicon-shopping-cart"></span> Stores</a></li>
 		</ul>
                 <ul class="nav navbar-nav navbar-right">
