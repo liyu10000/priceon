@@ -9,7 +9,7 @@ store_blueprint = Blueprint('stores', __name__)
 @store_blueprint.route('/')
 def index():
     stores = Store.all()
-    return render_template('stores/store_index.html', stores=stores)
+    return render_template('stores/store_index.jinja2', stores=stores)
 
 @store_blueprint.route('/store/<string:store_id>')
 def store_page(store_id):
